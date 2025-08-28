@@ -1,0 +1,5 @@
+2025-08-28 10:46:45,143 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {'q': 'keyword:"web mining"', 'p': 20, 's': 1, 'api_key': '4547aeced20ed62be02d26e533f1021a'}
+2025-08-28 10:47:35,479 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {'q': 'keyword:"web mining"', 'p': 20, 's': 1, 'api_key': '4547aeced20ed62be02d26e533f1021a'}
+2025-08-28 11:03:02,847 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {'q': 'keyword:"web usage mining"', 'p': 10, 's': 1, 'api_key': '4547aeced20ed62be02d26e533f1021a'}
+2025-08-28 11:03:42,461 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {'q': 'keyword:"web usage mining"', 'p': 10, 's': 1, 'api_key': '4547aeced20ed62be02d26e533f1021a'}
+2025-08-28 11:03:59,875 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {'q': 'keyword:"web content mining"', 'p': 10, 's': 1, 'api_key': '4547aeced20ed62be02d26e533f1021a'}
