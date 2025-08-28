@@ -24,8 +24,8 @@ df.to_csv("csv/webmining-journal.csv", index=False)
 ------------------
 
 
-[1;31m---------------------------------------------------------------------------[0m
-[1;31mNameError[0m                                 Traceback (most recent call last)
+[1;31m-----------------------------------------[0m
+[1;31mNameError[0mTraceback (most recent call last)
 Cell [1;32mIn[4], line 2[0m
 [0;32m      1[0m [38;5;66;03m# menyimpan ke csv[39;00m
 [1;32m----> 2[0m [43mdf[49m[38;5;241m.[39mto_csv([38;5;124m"[39m[38;5;124mcsv/webmining-journal.csv[39m[38;5;124m"[39m, index[38;5;241m=[39m[38;5;28;01mFalse[39;00m)

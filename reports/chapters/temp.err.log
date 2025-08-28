@@ -1,0 +1,235 @@
+Traceback (most recent call last):
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BRIAN\AppData\Roaming\Python\Python311\site-packages\jupyter_core\utils\__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\BRIAN\AppData\Local\Programs\Python\Python311\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import requests
+
+url = "https://shopee.co.id/api/v4/search/search_items?by=relevancy&extra_params=%7B%22global_search_session_id%22%3A%22gs-c5d39496-ac65-4a27-8036-4eca5606d334%22%2C%22search_session_id%22%3A%22ss-00f39127-cd1b-4099-a662-c6c35a134846%22%7D&keyword=machine%20learning&limit=20&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&source=SRP&version=2&view_session_id=6d9212f7-f2df-4b66-b5f0-59ee123ba0e1"
+
+headers = {
+    "accept": "application/json",
+    "accept-language": "en-US,en;q=0.9,id;q=0.8",
+    "af-ac-enc-dat": "40bce46fb9ed6733",
+    "af-ac-enc-sz-token": "YP8tLAIW5fZAsurvMKM02g==|VHY3Omj2y+B9lUZTl/2AreDsFPxzGqdkZZ0ZLaMBK4DSEO9vdAqWAWroEIxyAPoAAXNhT8UKrWiBmEm+|LMi0c0reHzSEMAwc|08|3",
+    "content-type": "application/json",
+    "d-nonptcha-sync": "AAAG3BRvQ8YA|7|rj9tPlPl347rs=",
+    "priority": "u=1, i",
+    "referer": "https://shopee.co.id/search?keyword=machine%20learning",
+    "sec-ch-ua": '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
+    "sec-ch-ua-mobile": "?1",
+    "sec-ch-ua-platform": '"Android"',
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "sz-token": "YP8tLAIW5fZAsurvMKM02g==|VHY3Omj2y+B9lUZTl/2AreDsFPxzGqdkZZ0ZLaMBK4DSEO9vdAqWAWroEIxyAPoAAXNhT8UKrWiBmEm+|LMi0c0reHzSEMAwc|08|3",
+    "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36",
+    "x-api-source": "rweb",
+    "x-csrftoken": "MrbLvvg6Vm3KYGE3UcFBeKhAjPgPYRsE",
+    "x-requested-with": "XMLHttpRequest",
+    "x-sap-ri": "35aaaf68937ddc41bd652837070168358c884cba7abc6b3a2434",
+    "x-sap-sec": "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",
+    "x-shopee-language": "id",
+    "x-sz-sdk-version": "1.12.22-1",
+}
+
+cookies = {
+    "_QPWSDCXHZQA": "d9f3416c-2c59-4ed4-91ca-243bf190b103",
+    "REC7iLP4Q": "36dd8388-8395-4355-8773-37f98b20a6a1",
+    "SPC_F": "JGJb1X9Jmb9kg28wMp3KF51gy0s4BMuC",
+    "REC_T_ID": "3bf70f7e-aee8-11ef-8a92-32474ba2b681",
+    "SPC_R_T_ID": "MBZjV6HyPIunTY1nS8ofCIgxqj6C3jY8pcZH0TFJYkNxzzVxfFAG01vfAaEqGb3EdRG+6b8OlRV/iedE6EwCcJTzyLfwpsKOS9TTxTLEkCRAlOv6WxzHlvf09VzTcHtNRe22eY1bJAYykhQk9gRXPqO15nvOzgw30ht9l8IYjTw=",
+    "SPC_R_T_IV": "VWZyRTEzaHhlMDVXQjlDRQ==",
+    "SPC_T_ID": "MBZjV6HyPIunTY1nS8ofCIgxqj6C3jY8pcZH0TFJYkNxzzVxfFAG01vfAaEqGb3EdRG+6b8OlRV/iedE6EwCcJTzyLfwpsKOS9TTxTLEkCRAlOv6WxzHlvf09VzTcHtNRe22eY1bJAYykhQk9gRXPqO15nvOzgw30ht9l8IYjTw=",
+    "SPC_T_IV": "VWZyRTEzaHhlMDVXQjlDRQ==",
+    "csrftoken": "MrbLvvg6Vm3KYGE3UcFBeKhAjPgPYRsE",
+}
+
+# request dengan Python
+response = requests.get(url, headers=headers, cookies=cookies)
+data = response.json()
+print(data)
+
+------------------
+
+
+[1;31m-----------------------------------------[0m
+[1;31mgaierror[0mTraceback (most recent call last)
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py:198[0m, in [0;36mHTTPConnection._new_conn[1;34m(self)[0m
+[0;32m    197[0m [38;5;28;01mtry[39;00m:
+[1;32m--> 198[0m     sock [38;5;241m=[39m [43mconnection[49m[38;5;241;43m.[39;49m[43mcreate_connection[49m[43m([49m
+[0;32m    199[0m [43m        [49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_dns_host[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mport[49m[43m)[49m[43m,[49m
+[0;32m    200[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mtimeout[49m[43m,[49m
+[0;32m    201[0m [43m        [49m[43msource_address[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msource_address[49m[43m,[49m
+[0;32m    202[0m [43m        [49m[43msocket_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msocket_options[49m[43m,[49m
+[0;32m    203[0m [43m    [49m[43m)[49m
+[0;32m    204[0m [38;5;28;01mexcept[39;00m socket[38;5;241m.[39mgaierror [38;5;28;01mas[39;00m e:
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\connection.py:60[0m, in [0;36mcreate_connection[1;34m(address, timeout, source_address, socket_options)[0m
+[0;32m     58[0m     [38;5;28;01mraise[39;00m LocationParseError([38;5;124mf[39m[38;5;124m"[39m[38;5;124m'[39m[38;5;132;01m{[39;00mhost[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m, label empty or too long[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;28;01mNone[39;00m
+[1;32m---> 60[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43msocket[49m[38;5;241;43m.[39;49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[43msocket[49m[38;5;241;43m.[39;49m[43mSOCK_STREAM[49m[43m)[49m:
+[0;32m     61[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\socket.py:962[0m, in [0;36mgetaddrinfo[1;34m(host, port, family, type, proto, flags)[0m
+[0;32m    961[0m addrlist [38;5;241m=[39m []
+[1;32m--> 962[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43m_socket[49m[38;5;241;43m.[39;49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[38;5;28;43mtype[39;49m[43m,[49m[43m [49m[43mproto[49m[43m,[49m[43m [49m[43mflags[49m[43m)[49m:
+[0;32m    963[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
+
+[1;31mgaierror[0m: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+[1;31mNameResolutionError[0mTraceback (most recent call last)
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:787[0m, in [0;36mHTTPConnectionPool.urlopen[1;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)[0m
+[0;32m    786[0m [38;5;66;03m# Make the request on the HTTPConnection object[39;00m
+[1;32m--> 787[0m response [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_request[49m[43m([49m
+[0;32m    788[0m [43m    [49m[43mconn[49m[43m,[49m
+[0;32m    789[0m [43m    [49m[43mmethod[49m[43m,[49m
+[0;32m    790[0m [43m    [49m[43murl[49m[43m,[49m
+[0;32m    791[0m [43m    [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout_obj[49m[43m,[49m
+[0;32m    792[0m [43m    [49m[43mbody[49m[38;5;241;43m=[39;49m[43mbody[49m[43m,[49m
+[0;32m    793[0m [43m    [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mheaders[49m[43m,[49m
+[0;32m    794[0m [43m    [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[0;32m    795[0m [43m    [49m[43mretries[49m[38;5;241;43m=[39;49m[43mretries[49m[43m,[49m
+[0;32m    796[0m [43m    [49m[43mresponse_conn[49m[38;5;241;43m=[39;49m[43mresponse_conn[49m[43m,[49m
+[0;32m    797[0m [43m    [49m[43mpreload_content[49m[38;5;241;43m=[39;49m[43mpreload_content[49m[43m,[49m
+[0;32m    798[0m [43m    [49m[43mdecode_content[49m[38;5;241;43m=[39;49m[43mdecode_content[49m[43m,[49m
+[0;32m    799[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mresponse_kw[49m[43m,[49m
+[0;32m    800[0m [43m[49m[43m)[49m
+[0;32m    802[0m [38;5;66;03m# Everything went great![39;00m
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:488[0m, in [0;36mHTTPConnectionPool._make_request[1;34m(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)[0m
+[0;32m    487[0m         new_e [38;5;241m=[39m _wrap_proxy_error(new_e, conn[38;5;241m.[39mproxy[38;5;241m.[39mscheme)
+[1;32m--> 488[0m     [38;5;28;01mraise[39;00m new_e
+[0;32m    490[0m [38;5;66;03m# conn.request() calls http.client.*.request, not the method in[39;00m
+[0;32m    491[0m [38;5;66;03m# urllib3.request. It also calls makefile (recv) on the socket.[39;00m
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:464[0m, in [0;36mHTTPConnectionPool._make_request[1;34m(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)[0m
+[0;32m    463[0m [38;5;28;01mtry[39;00m:
+[1;32m--> 464[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_conn[49m[43m([49m[43mconn[49m[43m)[49m
+[0;32m    465[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError) [38;5;28;01mas[39;00m e:
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1093[0m, in [0;36mHTTPSConnectionPool._validate_conn[1;34m(self, conn)[0m
+[0;32m   1092[0m [38;5;28;01mif[39;00m conn[38;5;241m.[39mis_closed:
+[1;32m-> 1093[0m     [43mconn[49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m[43m)[49m
+[0;32m   1095[0m [38;5;66;03m# TODO revise this, see https://github.com/urllib3/urllib3/issues/2791[39;00m
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py:704[0m, in [0;36mHTTPSConnection.connect[1;34m(self)[0m
+[0;32m    703[0m sock: socket[38;5;241m.[39msocket [38;5;241m|[39m ssl[38;5;241m.[39mSSLSocket
+[1;32m--> 704[0m [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m sock [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_new_conn[49m[43m([49m[43m)[49m
+[0;32m    705[0m server_hostname: [38;5;28mstr[39m [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhost
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py:205[0m, in [0;36mHTTPConnection._new_conn[1;34m(self)[0m
+[0;32m    204[0m [38;5;28;01mexcept[39;00m socket[38;5;241m.[39mgaierror [38;5;28;01mas[39;00m e:
+[1;32m--> 205[0m     [38;5;28;01mraise[39;00m NameResolutionError([38;5;28mself[39m[38;5;241m.[39mhost, [38;5;28mself[39m, e) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01me[39;00m
+[0;32m    206[0m [38;5;28;01mexcept[39;00m SocketTimeout [38;5;28;01mas[39;00m e:
+
+[1;31mNameResolutionError[0m: <urllib3.connection.HTTPSConnection object at 0x000001D651A56110>: Failed to resolve 'shopee.co.id' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+[1;31mMaxRetryError[0mTraceback (most recent call last)
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\adapters.py:667[0m, in [0;36mHTTPAdapter.send[1;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[0;32m    666[0m [38;5;28;01mtry[39;00m:
+[1;32m--> 667[0m     resp [38;5;241m=[39m [43mconn[49m[38;5;241;43m.[39;49m[43murlopen[49m[43m([49m
+[0;32m    668[0m [43m        [49m[43mmethod[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mmethod[49m[43m,[49m
+[0;32m    669[0m [43m        [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m
+[0;32m    670[0m [43m        [49m[43mbody[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mbody[49m[43m,[49m
+[0;32m    671[0m [43m        [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mheaders[49m[43m,[49m
+[0;32m    672[0m [43m        [49m[43mredirect[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[0;32m    673[0m [43m        [49m[43massert_same_host[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[0;32m    674[0m [43m        [49m[43mpreload_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[0;32m    675[0m [43m        [49m[43mdecode_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[0;32m    676[0m [43m        [49m[43mretries[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmax_retries[49m[43m,[49m
+[0;32m    677[0m [43m        [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m,[49m
+[0;32m    678[0m [43m        [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[0;32m    679[0m [43m    [49m[43m)[49m
+[0;32m    681[0m [38;5;28;01mexcept[39;00m (ProtocolError, [38;5;167;01mOSError[39;00m) [38;5;28;01mas[39;00m err:
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:841[0m, in [0;36mHTTPConnectionPool.urlopen[1;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)[0m
+[0;32m    839[0m     new_e [38;5;241m=[39m ProtocolError([38;5;124m"[39m[38;5;124mConnection aborted.[39m[38;5;124m"[39m, new_e)
+[1;32m--> 841[0m retries [38;5;241m=[39m [43mretries[49m[38;5;241;43m.[39;49m[43mincrement[49m[43m([49m
+[0;32m    842[0m [43m    [49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43merror[49m[38;5;241;43m=[39;49m[43mnew_e[49m[43m,[49m[43m [49m[43m_pool[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43m_stacktrace[49m[38;5;241;43m=[39;49m[43msys[49m[38;5;241;43m.[39;49m[43mexc_info[49m[43m([49m[43m)[49m[43m[[49m[38;5;241;43m2[39;49m[43m][49m
+[0;32m    843[0m [43m[49m[43m)[49m
+[0;32m    844[0m retries[38;5;241m.[39msleep()
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py:519[0m, in [0;36mRetry.increment[1;34m(self, method, url, response, error, _pool, _stacktrace)[0m
+[0;32m    518[0m     reason [38;5;241m=[39m error [38;5;129;01mor[39;00m ResponseError(cause)
+[1;32m--> 519[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
+[0;32m    521[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
+
+[1;31mMaxRetryError[0m: HTTPSConnectionPool(host='shopee.co.id', port=443): Max retries exceeded with url: /api/v4/search/search_items?by=relevancy&extra_params=%7B%22global_search_session_id%22%3A%22gs-c5d39496-ac65-4a27-8036-4eca5606d334%22%2C%22search_session_id%22%3A%22ss-00f39127-cd1b-4099-a662-c6c35a134846%22%7D&keyword=machine%20learning&limit=20&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&source=SRP&version=2&view_session_id=6d9212f7-f2df-4b66-b5f0-59ee123ba0e1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D651A56110>: Failed to resolve 'shopee.co.id' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+[1;31mConnectionError[0mTraceback (most recent call last)
+Cell [1;32mIn[1], line 44[0m
+[0;32m     31[0m cookies [38;5;241m=[39m {
+[0;32m     32[0m     [38;5;124m"[39m[38;5;124m_QPWSDCXHZQA[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124md9f3416c-2c59-4ed4-91ca-243bf190b103[39m[38;5;124m"[39m,
+[0;32m     33[0m     [38;5;124m"[39m[38;5;124mREC7iLP4Q[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m36dd8388-8395-4355-8773-37f98b20a6a1[39m[38;5;124m"[39m,
+[1;32m   (...)[0m
+[0;32m     40[0m     [38;5;124m"[39m[38;5;124mcsrftoken[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mMrbLvvg6Vm3KYGE3UcFBeKhAjPgPYRsE[39m[38;5;124m"[39m,
+[0;32m     41[0m }
+[0;32m     43[0m [38;5;66;03m# request dengan Python[39;00m
+[1;32m---> 44[0m response [38;5;241m=[39m [43mrequests[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mheaders[49m[43m,[49m[43m [49m[43mcookies[49m[38;5;241;43m=[39;49m[43mcookies[49m[43m)[49m
+[0;32m     45[0m data [38;5;241m=[39m response[38;5;241m.[39mjson()
+[0;32m     46[0m [38;5;28mprint[39m(data)
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\api.py:73[0m, in [0;36mget[1;34m(url, params, **kwargs)[0m
+[0;32m     62[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m     63[0m [38;5;250m    [39m[38;5;124mr[39m[38;5;124;03m"""Sends a GET request.[39;00m
+[0;32m     64[0m 
+[0;32m     65[0m [38;5;124;03m    :param url: URL for the new :class:`Request` object.[39;00m
+[1;32m   (...)[0m
+[0;32m     70[0m [38;5;124;03m    :rtype: requests.Response[39;00m
+[0;32m     71[0m [38;5;124;03m    """[39;00m
+[1;32m---> 73[0m     [38;5;28;01mreturn[39;00m [43mrequest[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mget[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43mparams[49m[38;5;241;43m=[39;49m[43mparams[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\api.py:59[0m, in [0;36mrequest[1;34m(method, url, **kwargs)[0m
+[0;32m     55[0m [38;5;66;03m# By using the 'with' statement we are sure the session is closed, thus we[39;00m
+[0;32m     56[0m [38;5;66;03m# avoid leaving sockets open which can trigger a ResourceWarning in some[39;00m
+[0;32m     57[0m [38;5;66;03m# cases, and look like a memory leak in others.[39;00m
+[0;32m     58[0m [38;5;28;01mwith[39;00m sessions[38;5;241m.[39mSession() [38;5;28;01mas[39;00m session:
+[1;32m---> 59[0m     [38;5;28;01mreturn[39;00m [43msession[49m[38;5;241;43m.[39;49m[43mrequest[49m[43m([49m[43mmethod[49m[38;5;241;43m=[39;49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\sessions.py:589[0m, in [0;36mSession.request[1;34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)[0m
+[0;32m    584[0m send_kwargs [38;5;241m=[39m {
+[0;32m    585[0m     [38;5;124m"[39m[38;5;124mtimeout[39m[38;5;124m"[39m: timeout,
+[0;32m    586[0m     [38;5;124m"[39m[38;5;124mallow_redirects[39m[38;5;124m"[39m: allow_redirects,
+[0;32m    587[0m }
+[0;32m    588[0m send_kwargs[38;5;241m.[39mupdate(settings)
+[1;32m--> 589[0m resp [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mprep[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msend_kwargs[49m[43m)[49m
+[0;32m    591[0m [38;5;28;01mreturn[39;00m resp
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\sessions.py:703[0m, in [0;36mSession.send[1;34m(self, request, **kwargs)[0m
+[0;32m    700[0m start [38;5;241m=[39m preferred_clock()
+[0;32m    702[0m [38;5;66;03m# Send the request[39;00m
+[1;32m--> 703[0m r [38;5;241m=[39m [43madapter[49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mrequest[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[0;32m    705[0m [38;5;66;03m# Total elapsed time of the request (approximately)[39;00m
+[0;32m    706[0m elapsed [38;5;241m=[39m preferred_clock() [38;5;241m-[39m start
+
+File [1;32m~\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\adapters.py:700[0m, in [0;36mHTTPAdapter.send[1;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[0;32m    696[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e[38;5;241m.[39mreason, _SSLError):
+[0;32m    697[0m         [38;5;66;03m# This branch is for urllib3 v1.22 and later.[39;00m
+[0;32m    698[0m         [38;5;28;01mraise[39;00m SSLError(e, request[38;5;241m=[39mrequest)
+[1;32m--> 700[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
+[0;32m    702[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
+[0;32m    703[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
+
+[1;31mConnectionError[0m: HTTPSConnectionPool(host='shopee.co.id', port=443): Max retries exceeded with url: /api/v4/search/search_items?by=relevancy&extra_params=%7B%22global_search_session_id%22%3A%22gs-c5d39496-ac65-4a27-8036-4eca5606d334%22%2C%22search_session_id%22%3A%22ss-00f39127-cd1b-4099-a662-c6c35a134846%22%7D&keyword=machine%20learning&limit=20&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&source=SRP&version=2&view_session_id=6d9212f7-f2df-4b66-b5f0-59ee123ba0e1 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D651A56110>: Failed to resolve 'shopee.co.id' ([Errno 11001] getaddrinfo failed)"))
+
