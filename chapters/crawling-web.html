@@ -416,22 +416,11 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">springernature_api_client.openaccess</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">openaccess</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">springernature_api_client.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_to_dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">springernature_api_client.openaccess</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">openaccess</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">springernature_api_client.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_to_dataframe</span>
 
-    <span class="n">openaccess_client</span> <span class="o">=</span> <span class="n">openaccess</span><span class="o">.</span><span class="n">OpenAccessAPI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">openaccess_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;keyword:&quot;web mining&quot;&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fetch_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_premium</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-08-28 10:47:35,479 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {&#39;q&#39;: &#39;keyword:&quot;web mining&quot;&#39;, &#39;p&#39;: 20, &#39;s&#39;: 1, &#39;api_key&#39;: &#39;4547aeced20ed62be02d26e533f1021a&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching openaccess: query=&#39;keyword:&quot;web mining&quot;&#39;, page=20, start=1
+<span class="n">openaccess_client</span> <span class="o">=</span> <span class="n">openaccess</span><span class="o">.</span><span class="n">OpenAccessAPI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">openaccess_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;keyword:&quot;web mining&quot;&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fetch_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_premium</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
