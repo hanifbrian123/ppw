@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/crawling-web';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Crawling Tugas 2" href="crawling-tugas2.html" />
     <link rel="prev" title="Pengantar Web Mining" href="pengantar-web-mining.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawling-tugas2.html">Crawling Tugas 2</a></li>
 </ul>
 
     </div>
@@ -537,14 +539,6 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: [&#39;Background&#39;,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-08-28 11:03:02,847 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {&#39;q&#39;: &#39;keyword:&quot;web usage mining&quot;&#39;, &#39;p&#39;: 10, &#39;s&#39;: 1, &#39;api_key&#39;: &#39;4547aeced20ed62be02d26e533f1021a&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching openaccess: query=&#39;keyword:&quot;web usage mining&quot;&#39;, page=10, start=1
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,7 +570,7 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: [&#39;Background&#39;,
 
 DOI: doi:10.7238/rusc.v11i1.1902
 Title: M-learning patterns in the virtual classroom
-Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: &#39;Mobile devices are everywhere to be found on university campuses. This has changed the nature of higher education and led to a new mobile form of e-learning known as m-learning. The aim of this article is to assess the penetration of mobile devices for learning purposes in higher education and to identify the main usage patterns. To that end, the study used two complementary methodologies: web usage mining and a questionnaire survey. Web usage mining was performed to collect data from the university’s learning management system (LMS) in order to explore this new technology’s usage trends in the past four academic years and to identify the main patterns of behaviour. A questionnaire survey of 460 university students was conducted to find out about the student-declared level of m-learning penetration. The results are conclusive: 25% of accesses to the LMS were made from mobile devices and 75% of the students used these devices for learning purposes. The findings of this study have significant implications not only for researchers and lecturers, but also for institutions intending to implement this teaching/learning methodology.&#39;}
+Abstract: {&#39;h1&#39;: &#39;Resumen&#39;, &#39;p&#39;: &#39;Los dispositivos móviles se han vuelto omnipresentes en los campus universitarios, lo que ha cambiado la naturaleza de la educación superior y ha proporcionado una nueva forma de aprendizaje electrónico móvil ( m-learning ). El objetivo de este trabajo es evaluar la penetración que tienen los dispositivos móviles para el aprendizaje en la educación superior e identificar los principales patrones de uso. El estudio utiliza de forma complementaria dos metodologías. En primer lugar se realiza un ejercicio de minería web en la plataforma virtual de la universidad, a través del cual se exploran las tendencias del uso de esta nueva tecnología en los últimos cuatro cursos académicos y se identifican los principales patrones de comportamiento. En segundo lugar se lleva a cabo una encuesta a 460 estudiantes universitarios para conocer el nivel de penetración del m-learning declarado por los estudiantes. Los resultados son concluyentes, el 25% de las entradas al sistema LMS (Learning Maganament Systems) se realizan con dispositivo móvil y el 75% de los estudiantes utilizan estos dispositivos con fines de aprendizaje. Las implicaciones de este estudio son importantes tanto para investigadores y profesores como para las instituciones que pretendan implantar esta metodología de estudio.&#39;}
 
 DOI: doi:10.2991/ijcis.2011.4.5.29
 Title: Identifying Web Users on the Base of their Browsing Patterns
@@ -599,14 +593,6 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: &#39;Our aim is to dev
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">openaccess_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;keyword:&quot;web content mining&quot;&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fetch_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_premium</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-08-28 11:03:59,875 - INFO - Making request to: https://api.springernature.com/openaccess/json with params: {&#39;q&#39;: &#39;keyword:&quot;web content mining&quot;&#39;, &#39;p&#39;: 10, &#39;s&#39;: 1, &#39;api_key&#39;: &#39;4547aeced20ed62be02d26e533f1021a&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching openaccess: query=&#39;keyword:&quot;web content mining&quot;&#39;, page=10, start=1
 </pre></div>
 </div>
 </div>
@@ -816,7 +802,7 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: &#39;This paper explor
       <th>3</th>
       <td>doi:10.7238/rusc.v11i1.1902</td>
       <td>M-learning patterns in the virtual classroom</td>
-      <td>{'h1': 'Abstract', 'p': 'Mobile devices are ev...</td>
+      <td>{'h1': 'Resumen', 'p': 'Los dispositivos móvil...</td>
     </tr>
     <tr>
       <th>4</th>
@@ -827,6 +813,35 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: &#39;This paper explor
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 ..
+2 ..
+3 ..
+4 ..
+5 ..
+6 ..
+7 ..
+8 ..
+9 ..
+10 ..
+11 ..
+12 ..
+13 ..
+14 ..
+15 ..
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -870,6 +885,15 @@ Abstract: {&#39;h1&#39;: &#39;Abstract&#39;, &#39;p&#39;: &#39;This paper explor
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Pengantar Web Mining</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="crawling-tugas2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Crawling Tugas 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
