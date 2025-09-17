@@ -1,2 +1,0 @@
-# Intro
-Ini adalah series Matakuliah Web Mining. Silahkan cek sidebar disamping kiri ⬅️ untuk navigasi Tugas-tugas atau Project-project, dan lihat lah sidebar disamping kanan ➡️ untuk navigasi heading dari tiap Tugas atau Project
