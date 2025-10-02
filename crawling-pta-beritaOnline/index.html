@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2) - Web Mining</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
         var mkdocs_page_name = "Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)";
-        var mkdocs_page_input_path = "chapters\\crawling-tugas2.ipynb";
+        var mkdocs_page_input_path = "crawling-pta-beritaOnline.ipynb";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
+      <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
@@ -30,14 +30,14 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../..">
-          <img src="../../img/foto.jpg" class="logo" alt="Logo"/>
+          <a href="..">
+          <img src="../data/img/foto.jpg" class="logo" alt="Logo"/>
         </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Intro</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Intro</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Tugas</span></p>
@@ -46,53 +46,51 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pengantar-web-mining/">Pengantar Web Mining</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" >Crawling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../crawling-springer-nature/">Crawling springer nature</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../crawling-web/">Crawling springer nature</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#crawling-pta-all-paper-all-prodi">Crawling PTA - All Paper / All Prodi</a>
+    <li class="toctree-l2"><a class="reference internal" href="#crawling-pta-all-paper-all-prodi">Crawling PTA - All Paper / All Prodi</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#import-modul">Import modul</a>
+    <li class="toctree-l3"><a class="reference internal" href="#import-modul">Import modul</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#fungsi-crawling">Fungsi Crawling</a>
+    <li class="toctree-l3"><a class="reference internal" href="#fungsi-crawling">Fungsi Crawling</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-batch-1-byprod-1-sd-3">Crawling batch 1 - byprod 1 s/d 3</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-batch-1-byprod-1-sd-3">Crawling batch 1 - byprod 1 s/d 3</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-batch-2-byprod-41-sd-8170">Crawling batch 2 - byprod 4/1 sd 8/170</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-batch-2-byprod-41-sd-8170">Crawling batch 2 - byprod 4/1 sd 8/170</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-batch-3-byprod-8171-sd-8177">Crawling batch 3 - byprod 8/171 s/d 8/177</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-batch-3-byprod-8171-sd-8177">Crawling batch 3 - byprod 8/171 s/d 8/177</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-batch-4-all-fakultas-teknik-start-91">Crawling batch 4 - All Fakultas Teknik (start 9/1)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-batch-4-all-fakultas-teknik-start-91">Crawling batch 4 - All Fakultas Teknik (start 9/1)</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-batch-5-byprod-121-sd">Crawling batch 5 - byprod 12/1 s/d ...</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-batch-5-byprod-121-sd">Crawling batch 5 - byprod 12/1 s/d ...</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#menampilkan-dataframe-dari-hasil">Menampilkan dataframe dari hasil</a>
+    <li class="toctree-l3"><a class="reference internal" href="#menampilkan-dataframe-dari-hasil">Menampilkan dataframe dari hasil</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#crawling-berita-online">Crawling berita online</a>
+    <li class="toctree-l2"><a class="reference internal" href="#crawling-berita-online">Crawling berita online</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#categorybusiness">category='business'</a>
+    <li class="toctree-l3"><a class="reference internal" href="#categorybusiness">category='business'</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#categoryeducation">category='education'</a>
+    <li class="toctree-l3"><a class="reference internal" href="#categoryeducation">category='education'</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#all-category-urut-health-politics-science-technology">all category urut: health, politics, science, technology</a>
+    <li class="toctree-l3"><a class="reference internal" href="#all-category-urut-health-politics-science-technology">all category urut: health, politics, science, technology</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crawling-lagi-sampai-6x1500">Crawling lagi sampai 6x1500</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crawling-lagi-sampai-6x1500">Crawling lagi sampai 6x1500</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#gabung-semua-jadi-satu">Gabung semua jadi satu.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#gabung-semua-jadi-satu">Gabung semua jadi satu.</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#crawling-link-keluaran">Crawling link keluaran</a>
+    <li class="toctree-l2"><a class="reference internal" href="#crawling-link-keluaran">Crawling link keluaran</a>
     </li>
-    </ul>
-                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../preprocessing/">Preprocessing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../embedding/">Embedding</a>
                   </li>
               </ul>
       </div>
@@ -102,15 +100,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Web Mining</a>
+          <a href="..">Web Mining</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Tugas</li>
-          <li class="breadcrumb-item">Crawling</li>
       <li class="breadcrumb-item active">Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -21538,7 +21535,7 @@ plt.show()
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../crawling-web/" class="btn btn-neutral float-left" title="Crawling springer nature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../crawling-springer-nature/" class="btn btn-neutral float-left" title="Crawling springer nature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../preprocessing/" class="btn btn-neutral float-right" title="Preprocessing">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -21562,17 +21559,17 @@ plt.show()
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../crawling-web/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../crawling-springer-nature/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../preprocessing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
