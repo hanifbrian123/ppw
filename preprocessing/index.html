@@ -108,6 +108,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">LDA Classification</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../uts-gabung/">UTS</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -2031,43 +2033,43 @@ def my_stopwords_rm(listOfToken):
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
-<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span>    <span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+    <span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
 
-<span class="c1"># cache manual</span>
-<span class="n">stem_cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># cache manual</span>
+    <span class="n">stem_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">my_stem</span><span class="p">(</span><span class="n">listOfToken</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">listOfToken</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stem_cache</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stem_cache</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">stemmed</span> <span class="o">=</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="n">stem_cache</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">stemmed</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stemmed</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">my_stem</span><span class="p">(</span><span class="n">listOfToken</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">listOfToken</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stem_cache</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stem_cache</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stemmed</span> <span class="o">=</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="n">stem_cache</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">stemmed</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stemmed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16">factory = StemmerFactory()
-stemmer = factory.create_stemmer()
+<div class="clipboard-copy-txt" id="cell-16">    factory = StemmerFactory()
+    stemmer = factory.create_stemmer()
 
-# cache manual
-stem_cache = {}
+    # cache manual
+    stem_cache = {}
 
-def my_stem(listOfToken):
-    result = []
-    for t in listOfToken:
-        if t in stem_cache:
-            result.append(stem_cache[t])
-        elif t is None:
-            result.append('')
-        else:
-            stemmed = stemmer.stem(t)
-            stem_cache[t] = stemmed
-            result.append(stemmed)
-    return result
+    def my_stem(listOfToken):
+        result = []
+        for t in listOfToken:
+            if t in stem_cache:
+                result.append(stem_cache[t])
+            elif t is None:
+                result.append('')
+            else:
+                stemmed = stemmer.stem(t)
+                stem_cache[t] = stemmed
+                result.append(stemmed)
+        return result
 </div>
 </div>
 </div>
