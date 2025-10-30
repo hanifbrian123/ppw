@@ -46,27 +46,41 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pengantar-web-mining/">Pengantar Web Mining</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Crawling springer nature</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Crawling</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#keyword-web-mining">keyword: web mining</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Crawling springer nature</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#keyword-web-mining">keyword: web mining</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#keyword-web-usage-mining">Keyword: web usage mining</a>
+    <li class="toctree-l3"><a class="reference internal" href="#keyword-web-usage-mining">Keyword: web usage mining</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#keyword-web-content-mining">Keyword: web content mining</a>
+    <li class="toctree-l3"><a class="reference internal" href="#keyword-web-content-mining">Keyword: web content mining</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#menampilkan-csv">Menampilkan csv</a>
+    <li class="toctree-l3"><a class="reference internal" href="#menampilkan-csv">Menampilkan csv</a>
     </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../crawling-pta-beritaOnline/">Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../crawling-pta-beritaOnline/">Crawling PTA, &amp; Berita Online</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../crawling-link-ft/">Crawling link keluaran (Fakultas Teknik UTM)</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../preprocessing/">Preprocessing</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../embedding/">Embedding</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">LDA Classification</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">Latent Dirichlet Allocation (LDA)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../uts-gabung/">UTS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Page Rank</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../webGoogle10kOnlyNodeId-pagerank/">Web Google 10k NodeID Page Rank</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FTUTM-link-pagerank/">Fakultas Teknik UTM teknik.trunojoyo.ac.id link Page Rank</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -84,6 +98,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Tugas</li>
+          <li class="breadcrumb-item">Crawling</li>
       <li class="breadcrumb-item active">Crawling springer nature</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -1362,66 +1377,6 @@ df[['identifier', 'title', 'abstract']].head()</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a6155ffa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">'..'</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-15">import time
-for t in range(15):
-    print(t+1,'..')
-    time.sleep(1)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1 ..
-2 ..
-3 ..
-4 ..
-5 ..
-6 ..
-7 ..
-8 ..
-9 ..
-10 ..
-11 ..
-12 ..
-13 ..
-14 ..
-15 ..
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div> <!-- jp-Notebook -->
 </div> <!-- jupyter-wrapper -->
@@ -1435,7 +1390,7 @@ for t in range(15):
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../pengantar-web-mining/" class="btn btn-neutral float-left" title="Pengantar Web Mining"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../crawling-pta-beritaOnline/" class="btn btn-neutral float-right" title="Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../crawling-pta-beritaOnline/" class="btn btn-neutral float-right" title="Crawling PTA, &amp; Berita Online">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

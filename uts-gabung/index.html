@@ -46,15 +46,21 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pengantar-web-mining/">Pengantar Web Mining</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../crawling-springer-nature/">Crawling springer nature</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../crawling-pta-beritaOnline/">Crawling PTA, Berita Online, dan Link Keluaran (Tugas 2)</a>
+                  <li class="toctree-l1"><a class="reference internal" >Crawling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../crawling-springer-nature/">Crawling springer nature</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../crawling-pta-beritaOnline/">Crawling PTA, &amp; Berita Online</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../crawling-link-ft/">Crawling link keluaran (Fakultas Teknik UTM)</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../preprocessing/">Preprocessing</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../embedding/">Embedding</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">LDA Classification</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">Latent Dirichlet Allocation (LDA)</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">UTS</a>
     <ul class="current">
@@ -136,6 +142,14 @@
     </li>
         </ul>
     </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Page Rank</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../webGoogle10kOnlyNodeId-pagerank/">Web Google 10k NodeID Page Rank</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FTUTM-link-pagerank/">Fakultas Teknik UTM teknik.trunojoyo.ac.id link Page Rank</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -659,7 +673,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/csv/berita-mul.csv'</span><span class="p">)</span> 
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/csv/berita-mul.csv'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"🔎 Ukuran dataset:"</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"📊 Info dataframe:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
@@ -728,7 +742,7 @@ from wordcloud import WordCloud
 from collections import Counter
 
 
-df = pd.read_csv('../data/csv/berita-mul.csv') 
+df = pd.read_csv('../data/csv/berita-mul.csv')
 print("🔎 Ukuran dataset:", df.shape)
 print("📊 Info dataframe:")
 print(df.info())
@@ -11574,7 +11588,8 @@ Name: text_length, dtype: float64
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../lda-data-berita/" class="btn btn-neutral float-left" title="LDA Classification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lda-data-berita/" class="btn btn-neutral float-left" title="Latent Dirichlet Allocation (LDA)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../webGoogle10kOnlyNodeId-pagerank/" class="btn btn-neutral float-right" title="Web Google 10k NodeID Page Rank">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -11599,6 +11614,8 @@ Name: text_length, dtype: float64
     
       <span><a href="../lda-data-berita/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../webGoogle10kOnlyNodeId-pagerank/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
