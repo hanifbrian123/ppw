@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Latent Dirichlet Allocation (LDA) - Web Mining</title>
+    <title>NASA - Tabel Biner Halaman dikunjungi dan session - Web Mining</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Latent Dirichlet Allocation (LDA)";
-        var mkdocs_page_input_path = "lda-data-berita.ipynb";
+        var mkdocs_page_name = "NASA - Tabel Biner Halaman dikunjungi dan session";
+        var mkdocs_page_input_path = "nasa-webusage.ipynb";
         var mkdocs_page_url = null;
       </script>
     
@@ -60,25 +60,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../embedding/">Embedding</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Latent Dirichlet Allocation (LDA)</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#load-data">load data</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#preprocessing">preprocessing</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#get-bow-dict">get BOW dict</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#filter-extreme-the-dict">filter extreme the dict</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#convert-document-into-bow-format-by-doc2bow">Convert document into BOW format by doc2bow</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-lda-using-bag-of-words-data">Running LDA using Bag of Words data</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#topic-coherence">topic coherence</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#classifying">classifying</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../lda-data-berita/">Latent Dirichlet Allocation (LDA)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../uts-gabung/">UTS</a>
                   </li>
@@ -90,9 +72,29 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >Web Usage Mining</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../nasa-webusage/">NASA - Tabel Biner Halaman dikunjungi dan session</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Web Usage Mining</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">NASA - Tabel Biner Halaman dikunjungi dan session</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#download-file">Download file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contoh-baris">Contoh baris</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-dataframe">To Dataframe</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-baris">Filter baris</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#konversi-datetime">Konversi datetime</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tambah-identifier">Tambah identifier</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tampilan-hasil-akhir">Tampilan hasil akhir</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#membuat-sesi">Membuat Sesi</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#membuat-tabel-biner">Membuat tabel biner</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../web-usage/">Data log to Tabel Biner Halaman dikunjungi dan session Sederhana</a>
                 </li>
@@ -114,7 +116,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Tugas</li>
-      <li class="breadcrumb-item active">Latent Dirichlet Allocation (LDA)</li>
+          <li class="breadcrumb-item">Web Usage Mining</li>
+      <li class="breadcrumb-item active">NASA - Tabel Biner Halaman dikunjungi dan session</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -559,23 +562,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62eedc30">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f6a8363">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="latent-dirichlet-allocation-lda">Latent Dirichlet Allocation (LDA)<a class="anchor-link" href="#latent-dirichlet-allocation-lda">¶</a></h1>
+<h1 id="nasa-tabel-biner-halaman-dikunjungi-dan-session">NASA - Tabel Biner Halaman dikunjungi dan session<a class="anchor-link" href="#nasa-tabel-biner-halaman-dikunjungi-dan-session">¶</a></h1>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3515ac33">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f8a9204">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="download-file">Download file<a class="anchor-link" href="#download-file">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8fd69188">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -588,20 +602,58 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Download file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz"</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"../data/NASA_access_log_Jul95.gz"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mengunduh file dari FTP..."</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Selesai! File tersimpan sebagai:"</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import pandas as pd
-import warnings
-import ast</div>
+<div class="clipboard-copy-txt" id="cell-1"># Download file
+import urllib.request
+
+url = "ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz"
+filename = "../data/NASA_access_log_Jul95.gz"
+
+print("Mengunduh file dari FTP...")
+urllib.request.urlretrieve(url, filename)
+print("Selesai! File tersimpan sebagai:", filename)
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9af6e7c7">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Mengunduh file dari FTP...
+Selesai! File tersimpan sebagai: ../data/NASA_access_log_Jul95.gz
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40a34265">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="contoh-baris">Contoh baris<a class="anchor-link" href="#contoh-baris">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=316fde46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -619,35 +671,71 @@ import ast</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
-<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Menampilkan 10 baris pertama</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gzip</span>
+
+<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"../data/NASA_access_log_Jul95.gz"</span><span class="p">,</span> <span class="s2">"rt"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>  <span class="c1"># "rt" = read text</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>  <span class="c1"># tampilkan 10 baris pertama</span>
+            <span class="k">break</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">from tqdm import tqdm
-tqdm.pandas()
+<div class="clipboard-copy-txt" id="cell-2"># Menampilkan 10 baris pertama
+import gzip
+
+with gzip.open("../data/NASA_access_log_Jul95.gz", "rt") as f:  # "rt" = read text
+    for i, line in enumerate(f):
+        print(line.strip())
+        if i &gt; 10:  # tampilkan 10 baris pertama
+            break
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>199.72.81.55 - - [01/Jul/1995:00:00:01 -0400] "GET /history/apollo/ HTTP/1.0" 200 6245
+unicomp6.unicomp.net - - [01/Jul/1995:00:00:06 -0400] "GET /shuttle/countdown/ HTTP/1.0" 200 3985
+199.120.110.21 - - [01/Jul/1995:00:00:09 -0400] "GET /shuttle/missions/sts-73/mission-sts-73.html HTTP/1.0" 200 4085
+burger.letters.com - - [01/Jul/1995:00:00:11 -0400] "GET /shuttle/countdown/liftoff.html HTTP/1.0" 304 0
+199.120.110.21 - - [01/Jul/1995:00:00:11 -0400] "GET /shuttle/missions/sts-73/sts-73-patch-small.gif HTTP/1.0" 200 4179
+burger.letters.com - - [01/Jul/1995:00:00:12 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 304 0
+burger.letters.com - - [01/Jul/1995:00:00:12 -0400] "GET /shuttle/countdown/video/livevideo.gif HTTP/1.0" 200 0
+205.212.115.106 - - [01/Jul/1995:00:00:12 -0400] "GET /shuttle/countdown/countdown.html HTTP/1.0" 200 3985
+d104.aa.net - - [01/Jul/1995:00:00:13 -0400] "GET /shuttle/countdown/ HTTP/1.0" 200 3985
+129.94.144.152 - - [01/Jul/1995:00:00:13 -0400] "GET / HTTP/1.0" 200 7074
+unicomp6.unicomp.net - - [01/Jul/1995:00:00:14 -0400] "GET /shuttle/countdown/count.gif HTTP/1.0" 200 40310
+unicomp6.unicomp.net - - [01/Jul/1995:00:00:14 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 200 786
+</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d0f94142">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a81488b3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="load-data">load data<a class="anchor-link" href="#load-data">¶</a></h2>
+<h2 id="to-dataframe">To Dataframe<a class="anchor-link" href="#to-dataframe">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4871010f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=77dd3d08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -660,109 +748,26 @@ tqdm.pandas()
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dfBerita</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/csv/preproc-berita-online.csv'</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">dfBeritaPrep</span><span class="o">=</span><span class="n">dfBerita</span><span class="p">[[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]]</span>
-<span class="n">dfBeritaPrep</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gzip</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">dfBerita=pd.read_csv('../data/csv/preproc-berita-online.csv',index_col=0)
-dfBeritaPrep=dfBerita[['isi_cleanText_kontraksi_tokenize_spell_stop_lemm']]
-dfBeritaPrep
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>isi_cleanText_kontraksi_tokenize_spell_stop_lemm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>['public', 'auction', 'sale', 'heather', 'edwa...</td>
-</tr>
-<tr>
-<th>1</th>
-<td>['filing', 'notice', 'side', 'thomas', 'sander...</td>
-</tr>
-<tr>
-<th>2</th>
-<td>['navigating', 'sarawak', 'gas', 'demand', 'wi...</td>
-</tr>
-<tr>
-<th>3</th>
-<td>['desk', 'diversified', 'skullcap', 'exposure'...</td>
-</tr>
-<tr>
-<th>4</th>
-<td>['singapore', 'crack', 'unlicensed', 'foreign'...</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-</tr>
-<tr>
-<th>1651</th>
-<td>['microsoft', 'take', 'action', 'employee', 'c...</td>
-</tr>
-<tr>
-<th>1652</th>
-<td>['surcharge', 'va', 'product', 'made', 'notabl...</td>
-</tr>
-<tr>
-<th>1653</th>
-<td>['map', 'actually', 'worth', 'model', 'context...</td>
-</tr>
-<tr>
-<th>1654</th>
-<td>['melon', 'mask', 'ai', 'lay', 'hundred', 'wor...</td>
-</tr>
-<tr>
-<th>1655</th>
-<td>['data', 'center', 'bringing', 'excitement', '...</td>
-</tr>
-</tbody>
-</table>
-<p>1656 rows × 1 columns</p>
+<div class="clipboard-copy-txt" id="cell-3">import gzip
+import re
+import pandas as pd
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0fc5e201">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e58f1c5d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -775,70 +780,21 @@ dfBeritaPrep
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dfBeritaPrep</span><span class="p">[</span><span class="s1">'index'</span><span class="p">]</span><span class="o">=</span><span class="n">dfBeritaPrep</span><span class="o">.</span><span class="n">index</span>
-<span class="n">dfBeritaPrep</span><span class="p">[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]</span><span class="o">=</span> <span class="n">dfBeritaPrep</span><span class="p">[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">dfBeritaPrep</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">dfBeritaPrep['index']=dfBeritaPrep.index
-dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm']= dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm'].apply(ast.literal_eval)
-dfBeritaPrep.info()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_23668\1377244310.py:1: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  dfBeritaPrep['index']=dfBeritaPrep.index
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;class 'pandas.core.frame.DataFrame'&gt;
-Index: 1656 entries, 0 to 1655
-Data columns (total 2 columns):
- #   Column                                            Non-Null Count  Dtype 
----  ------                                            --------------  ----- 
- 0   isi_cleanText_kontraksi_tokenize_spell_stop_lemm  1656 non-null   object
- 1   index                                             1656 non-null   int64 
-dtypes: int64(1), object(1)
-memory usage: 38.8+ KB
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_23668\1377244310.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm']= dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm'].apply(ast.literal_eval)
-</pre>
+<div class="clipboard-copy-txt" id="cell-4">from tqdm.notebook import tqdm</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6a616bb3">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8c440acd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -851,11 +807,56 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dfBeritaPrep</span><span class="p">[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]</span><span class="o">=</span><span class="n">dfBeritaPrep</span><span class="p">[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
-<span class="n">dfBeritaPrep</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># To Dataframe</span>
+
+<span class="c1"># Regex pattern Common Log Format</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">'(\S+) (\S+) (\S+) \[(.*?)\] "(.*?)" (\d</span><span class="si">{3}</span><span class="s1">) (\S+)'</span>
+<span class="p">)</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="c1"># max_rows = 100</span>
+<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"../data/NASA_access_log_Jul95.gz"</span><span class="p">,</span> <span class="s2">"rt"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"latin1"</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Reading sample"</span><span class="p">)):</span>
+        
+        <span class="c1"># if i&gt;max_rows:</span>
+        <span class="c1">#     break</span>
+        
+        <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+    <span class="s2">"host"</span><span class="p">,</span> <span class="s2">"rfc931"</span><span class="p">,</span> <span class="s2">"authuser"</span><span class="p">,</span> <span class="s2">"datetime_raw"</span><span class="p">,</span> <span class="s2">"request_raw"</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">,</span> <span class="s2">"bytes"</span>
+<span class="p">])</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm']=dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm'].apply(' '.join)
-dfBeritaPrep</div>
+<div class="clipboard-copy-txt" id="cell-5"># To Dataframe
+
+# Regex pattern Common Log Format
+pattern = re.compile(
+    r'(\S+) (\S+) (\S+) \[(.*?)\] "(.*?)" (\d{3}) (\S+)'
+)
+
+rows = []
+
+
+# max_rows = 100
+with gzip.open("../data/NASA_access_log_Jul95.gz", "rt", encoding="latin1", errors="ignore") as f:
+    for i, line in enumerate(tqdm(f, desc="Reading sample")):
+        
+        # if i&gt;max_rows:
+        #     break
+        
+        match = pattern.match(line)
+        if match:
+            rows.append(match.groups())
+
+df = pd.DataFrame(rows, columns=[
+    "host", "rfc931", "authuser", "datetime_raw", "request_raw", "status", "bytes"
+])
+</div>
 </div>
 </div>
 </div>
@@ -866,113 +867,20 @@ dfBeritaPrep</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_23668\3056176677.py:1: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm']=dfBeritaPrep['isi_cleanText_kontraksi_tokenize_spell_stop_lemm'].apply(' '.join)
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>isi_cleanText_kontraksi_tokenize_spell_stop_lemm</th>
-<th>index</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>public auction sale heather edward notice publ...</td>
-<td>0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>filing notice side thomas sander american dock...</td>
-<td>1</td>
-</tr>
-<tr>
-<th>2</th>
-<td>navigating sarawak gas demand without risking ...</td>
-<td>2</td>
-</tr>
-<tr>
-<th>3</th>
-<td>desk diversified skullcap exposure attractive ...</td>
-<td>3</td>
-</tr>
-<tr>
-<th>4</th>
-<td>singapore crack unlicensed foreign freelancer ...</td>
-<td>4</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>1651</th>
-<td>microsoft take action employee charlie kirk tr...</td>
-<td>1651</td>
-</tr>
-<tr>
-<th>1652</th>
-<td>surcharge va product made notable appearance i...</td>
-<td>1652</td>
-</tr>
-<tr>
-<th>1653</th>
-<td>map actually worth model context protocol map ...</td>
-<td>1653</td>
-</tr>
-<tr>
-<th>1654</th>
-<td>melon mask ai lay hundred worker tasked traini...</td>
-<td>1654</td>
-</tr>
-<tr>
-<th>1655</th>
-<td>data center bringing excitement concern valley...</td>
-<td>1655</td>
-</tr>
-</tbody>
-</table>
-<p>1656 rows × 2 columns</p>
-</div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Reading sample: 0it [00:00, ?it/s]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=54d2c125">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9150795b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -985,9 +893,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dfBeritaPrep</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">df</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">dfBeritaPrep.dtypes</div>
+<div class="clipboard-copy-txt" id="cell-6">df</div>
 </div>
 </div>
 </div>
@@ -997,23 +905,162 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>isi_cleanText_kontraksi_tokenize_spell_stop_lemm    object
-index                                                int64
-dtype: object</pre>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>rfc931</th>
+<th>authuser</th>
+<th>datetime_raw</th>
+<th>request_raw</th>
+<th>status</th>
+<th>bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>199.72.81.55</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:01 -0400</td>
+<td>GET /history/apollo/ HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+</tr>
+<tr>
+<th>1</th>
+<td>unicomp6.unicomp.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:06 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+</tr>
+<tr>
+<th>2</th>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:09 -0400</td>
+<td>GET /shuttle/missions/sts-73/mission-sts-73.ht...</td>
+<td>200</td>
+<td>4085</td>
+</tr>
+<tr>
+<th>3</th>
+<td>burger.letters.com</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:11 -0400</td>
+<td>GET /shuttle/countdown/liftoff.html HTTP/1.0</td>
+<td>304</td>
+<td>0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:11 -0400</td>
+<td>GET /shuttle/missions/sts-73/sts-73-patch-smal...</td>
+<td>200</td>
+<td>4179</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1891709</th>
+<td>163.205.53.14</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:22 -0400</td>
+<td>GET /shuttle/technology/images/srb_mod_compare...</td>
+<td>200</td>
+<td>28219</td>
+</tr>
+<tr>
+<th>1891710</th>
+<td>163.205.53.14</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /images/KSC-logosmall.gif HTTP/1.0</td>
+<td>200</td>
+<td>1204</td>
+</tr>
+<tr>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /shuttle/missions/missions.html HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+</tr>
+<tr>
+<th>1891712</th>
+<td>199.0.2.27</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /images/ksclogo-medium.gif HTTP/1.0</td>
+<td>200</td>
+<td>5866</td>
+</tr>
+<tr>
+<th>1891713</th>
+<td>tornado.umd.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:25 -0400</td>
+<td>GET /shuttle/missions/sts-74/sts-74-patch-smal...</td>
+<td>200</td>
+<td>5494</td>
+</tr>
+</tbody>
+</table>
+<p>1891714 rows × 7 columns</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5abc0cc9">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f8100a88">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1026,96 +1073,24 @@ dtype: object</pre>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">documents</span><span class="o">=</span><span class="n">dfBeritaPrep</span>
-<span class="n">documents</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">documents=dfBeritaPrep
-documents.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>isi_cleanText_kontraksi_tokenize_spell_stop_lemm</th>
-<th>index</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>public auction sale heather edward notice publ...</td>
-<td>0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>filing notice side thomas sander american dock...</td>
-<td>1</td>
-</tr>
-<tr>
-<th>2</th>
-<td>navigating sarawak gas demand without risking ...</td>
-<td>2</td>
-</tr>
-<tr>
-<th>3</th>
-<td>desk diversified skullcap exposure attractive ...</td>
-<td>3</td>
-</tr>
-<tr>
-<th>4</th>
-<td>singapore crack unlicensed foreign freelancer ...</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
+<div class="clipboard-copy-txt" id="cell-7">from tqdm.notebook import tqdm
+tqdm.pandas()
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2dfa85c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="preprocessing">preprocessing<a class="anchor-link" href="#preprocessing">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=239ff4c7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6083d701">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -1128,48 +1103,21 @@ documents.head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gensim</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordNetLemmatizer</span><span class="p">,</span> <span class="n">PorterStemmer</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># pecah "request raw" ke "request_method", "path", "http_protocol"</span>
+<span class="n">req_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\S+)\s+(\S+)\s+(\S+)'</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[[</span><span class="s2">"request_method"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">,</span> <span class="s2">"http_protocol"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"request_raw"</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">req_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span> <span class="k">if</span> <span class="n">req_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">import gensim
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer, PorterStemmer
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa48eee3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'wordnet'</span><span class="p">)</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'omw-1.4'</span><span class="p">)</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'stopwords'</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-9">import nltk
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-nltk.download('stopwords')
-</div>
+<div class="clipboard-copy-txt" id="cell-8"># pecah "request raw" ke "request_method", "path", "http_protocol"
+req_pattern = re.compile(r'(\S+)\s+(\S+)\s+(\S+)')
+
+df[["request_method", "path", "http_protocol"]] = df["request_raw"].progress_apply(
+    lambda x: pd.Series(req_pattern.match(x).groups()) if req_pattern.match(x) else pd.Series([None, None, None])
+)
+df</div>
 </div>
 </div>
 </div>
@@ -1180,695 +1128,12 @@ nltk.download('stopwords')
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[nltk_data] Downloading package wordnet to
-[nltk_data]     C:\Users\BRIAN\AppData\Roaming\nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!
-[nltk_data] Downloading package omw-1.4 to
-[nltk_data]     C:\Users\BRIAN\AppData\Roaming\nltk_data...
-[nltk_data]   Package omw-1.4 is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     C:\Users\BRIAN\AppData\Roaming\nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  0%|          | 0/1891714 [00:00&lt;?, ?it/s]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>True</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bc1a247e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">stemmer</span><span class="o">=</span><span class="n">PorterStemmer</span><span class="p">()</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">lemmatize_stemming</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">WordNetLemmatizer</span><span class="p">()</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">'v'</span><span class="p">))</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">result</span><span class="o">=</span><span class="p">[]</span>
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">gensim</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">:</span>
-
-        <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-            
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lemmatize_stemming</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-10">stemmer=PorterStemmer()
-
-def lemmatize_stemming(text):
-    return stemmer.stem(WordNetLemmatizer().lemmatize(text, pos='v'))
-
-def preprocess(text):
-    result=[]
-    for token in gensim.utils.simple_preprocess(text) :
-
-        if token not in stopwords.words('english') and len(token) &gt; 3:
-            
-            result.append(lemmatize_stemming(token))
-    return result
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e198b475">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">document_num</span> <span class="o">=</span> <span class="mi">33</span>
-<span class="n">doc_sample</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">documents</span><span class="p">[</span><span class="s1">'index'</span><span class="p">]</span> <span class="o">==</span> <span class="n">document_num</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Original document: "</span><span class="p">)</span>
-<span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc_sample</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">):</span>
-    <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">Tokenized and lemmatized document: "</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">preprocess</span><span class="p">(</span><span class="n">doc_sample</span><span class="p">)))</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-11">document_num = 33
-doc_sample = documents[documents['index'] == document_num].values[0][0]
-
-print("Original document: ")
-words = []
-for word in doc_sample.split(' '):
-    words.append(word)
-print(words)
-print("\n\nTokenized and lemmatized document: ")
-print((preprocess(doc_sample)))
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Original document: 
-['year', 'mortgage', 'rate', 'drop', 'lowest', 'level', 'almost', 'year', 'mortgage', 'rate', 'mostly', 'falling', 'since', 'july', 'amid', 'expected', 'interest', 'rate', 'cut', 'federal', 'reserve', '', 'average', 'rate', 'year', 'u', 'mortgage', 'fell', 'week', 'lowest', 'level', 'nearly', 'year', 'reflecting', 'pullback', 'treasury', 'yield', 'ahead', 'expected', 'interest', 'rate', 'cut', 'federal', 'reserve', 'next', 'week', 'longer', 'rate', 'eased', 'last', 'week', 'mortgage', 'buyer', 'freddie', 'mac', 'said', 'thursday', 'year', 'ago', 'rate', 'averaged', 'borrowing', 'cost', 'year', 'firedrake', 'mortgage', 'popular', 'homeowner', 'refinancing', 'home', 'loan', 'also', 'fell', 'average', 'rate', 'slipped', 'last', 'week', 'year', 'ago', 'freddie', 'mac', 'said', 'mortgage', 'rate', 'influenced', 'several', 'factor', 'federal', 'reserve', 'interest', 'rate', 'policy', 'decision', 'bond', 'market', 'investor', 'expectation', 'economy', 'inflation', 'rate', 'mostly', 'declining', 'since', 'late', 'july', 'amid', 'growing', 'expectation', 'fed', 'cut', 'benchmark', 'shorter', 'interest', 'rate', 'first', 'time', 'year', 'central', 'bank', 'meeting', 'policymakers', 'next', 'week', 'fed', 'set', 'mortgage', 'rate', 'action', 'influence', 'bond', 'investor', 'appetite', 'longer', 'u', 'government', 'bond', 'like', 'year', 'treasury', 'note', 'lender', 'use', 'yield', 'year', 'treasure', 'guide', 'pricing', 'home', 'loan', 'yield', 'thursday', 'afternoon', 'fed', 'kept', 'main', 'interest', 'rate', 'hold', 'year', 'worried', 'inflation', 'potentially', 'worsening', 'associated', 'press']
-
-
-Tokenized and lemmatized document: 
-['year', 'mortgag', 'rate', 'drop', 'lowest', 'level', 'almost', 'year', 'mortgag', 'rate', 'mostli', 'fall', 'sinc', 'juli', 'amid', 'expect', 'interest', 'rate', 'feder', 'reserv', 'averag', 'rate', 'year', 'mortgag', 'fell', 'week', 'lowest', 'level', 'nearli', 'year', 'reflect', 'pullback', 'treasuri', 'yield', 'ahead', 'expect', 'interest', 'rate', 'feder', 'reserv', 'next', 'week', 'longer', 'rate', 'eas', 'last', 'week', 'mortgag', 'buyer', 'freddi', 'say', 'thursday', 'year', 'rate', 'averag', 'borrow', 'cost', 'year', 'firedrak', 'mortgag', 'popular', 'homeown', 'refin', 'home', 'loan', 'also', 'fell', 'averag', 'rate', 'slip', 'last', 'week', 'year', 'freddi', 'say', 'mortgag', 'rate', 'influenc', 'sever', 'factor', 'feder', 'reserv', 'interest', 'rate', 'polici', 'decis', 'bond', 'market', 'investor', 'expect', 'economi', 'inflat', 'rate', 'mostli', 'declin', 'sinc', 'late', 'juli', 'amid', 'grow', 'expect', 'benchmark', 'shorter', 'interest', 'rate', 'first', 'time', 'year', 'central', 'bank', 'meet', 'policymak', 'next', 'week', 'mortgag', 'rate', 'action', 'influenc', 'bond', 'investor', 'appetit', 'longer', 'govern', 'bond', 'like', 'year', 'treasuri', 'note', 'lender', 'yield', 'year', 'treasur', 'guid', 'price', 'home', 'loan', 'yield', 'thursday', 'afternoon', 'keep', 'main', 'interest', 'rate', 'hold', 'year', 'worri', 'inflat', 'potenti', 'worsen', 'associ', 'press']
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fc3381f3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">processed_docs</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
-<span class="n">processed_docs</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-12">processed_docs = documents['isi_cleanText_kontraksi_tokenize_spell_stop_lemm'].map(preprocess)
-processed_docs[:10]</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>0    [public, auction, sale, heather, edward, notic...
-1    [file, notic, side, thoma, sander, american, d...
-2    [navig, sarawak, demand, without, risk, nation...
-3    [desk, diversifi, skullcap, exposur, attract, ...
-4    [singapor, crack, unlicens, foreign, freelanc,...
-5    [armada, villa, unit, clear, reserv, sell, ass...
-6    [home, price, soar, across, countri, push, mil...
-7    [ringgit, expect, trade, tight, rang, next, we...
-8    [earli, warn, report, mount, logan, capit, for...
-9    [villag, benefit, multipurpos, hall, farm, roa...
-Name: isi_cleanText_kontraksi_tokenize_spell_stop_lemm, dtype: object</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30dde41b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="get-bow-dict">get BOW dict<a class="anchor-link" href="#get-bow-dict">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fe1ceb0e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dictionary</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">processed_docs</span><span class="p">)</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">break</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-13">dictionary = gensim.corpora.Dictionary(processed_docs)
-count = 0
-for k, v in dictionary.items():
-    print(k, v)
-    count += 1
-    if count &gt; 10:
-        break
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0 anita
-1 auction
-2 brent
-3 carter
-4 corner
-5 cross
-6 default
-7 detail
-8 edward
-9 equip
-10 heather
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0eaaf96">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="filter-extreme-the-dict">filter extreme the dict<a class="anchor-link" href="#filter-extreme-the-dict">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a14e27d4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dictionary</span><span class="o">.</span><span class="n">filter_extremes</span><span class="p">(</span><span class="n">no_below</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">no_above</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">keep_n</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-14">dictionary.filter_extremes(no_below=15, no_above=0.1, keep_n=100000)</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4dcfdd29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="convert-document-into-bow-format-by-doc2bow">Convert document into BOW format by doc2bow<a class="anchor-link" href="#convert-document-into-bow-format-by-doc2bow">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c2d3dbd7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">bow_corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">processed_docs</span><span class="p">]</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-15">bow_corpus = [dictionary.doc2bow(doc) for doc in processed_docs]</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0e21436f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">bow_doc_1656</span> <span class="o">=</span> <span class="n">bow_corpus</span><span class="p">[</span><span class="n">document_num</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bow_doc_1656</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Word </span><span class="si">{}</span><span class="s2"> (</span><span class="se">\"</span><span class="si">{}</span><span class="se">\"</span><span class="s2">) appears </span><span class="si">{}</span><span class="s2"> time."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bow_doc_1656</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> 
-                                                    <span class="n">dictionary</span><span class="p">[</span><span class="n">bow_doc_1656</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> 
-                                                    <span class="n">bow_doc_1656</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-16">bow_doc_1656 = bow_corpus[document_num]
-
-for i in range(len(bow_doc_1656)):
-    print("Word {} (\"{}\") appears {} time.".format(bow_doc_1656[i][0], 
-                                                    dictionary[bow_doc_1656[i][0]], 
-                                                    bow_doc_1656[i][1]))
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Word 54 ("buyer") appears 1 time.
-Word 57 ("central") appears 1 time.
-Word 89 ("guid") appears 1 time.
-Word 96 ("influenc") appears 2 time.
-Word 97 ("investor") appears 2 time.
-Word 172 ("bank") appears 1 time.
-Word 248 ("thursday") appears 2 time.
-Word 291 ("reserv") appears 3 time.
-Word 308 ("averag") appears 3 time.
-Word 320 ("declin") appears 1 time.
-Word 325 ("eas") appears 1 time.
-Word 326 ("economi") appears 1 time.
-Word 344 ("nearli") appears 1 time.
-Word 374 ("worsen") appears 1 time.
-Word 388 ("inflat") appears 2 time.
-Word 392 ("mostli") appears 2 time.
-Word 483 ("loan") appears 2 time.
-Word 508 ("press") appears 1 time.
-Word 565 ("ahead") appears 1 time.
-Word 567 ("amid") appears 2 time.
-Word 666 ("yield") appears 3 time.
-Word 752 ("juli") appears 2 time.
-Word 753 ("late") appears 1 time.
-Word 824 ("shorter") appears 1 time.
-Word 854 ("almost") appears 1 time.
-Word 860 ("bond") appears 3 time.
-Word 871 ("drop") appears 1 time.
-Word 878 ("fall") appears 1 time.
-Word 879 ("fell") appears 2 time.
-Word 889 ("main") appears 1 time.
-Word 901 ("slip") appears 1 time.
-Word 910 ("treasuri") appears 2 time.
-Word 1072 ("afternoon") appears 1 time.
-Word 1073 ("appetit") appears 1 time.
-Word 1074 ("benchmark") appears 1 time.
-Word 1075 ("factor") appears 1 time.
-Word 1076 ("lowest") appears 2 time.
-Word 1077 ("policymak") appears 1 time.
-Word 1078 ("popular") appears 1 time.
-Word 1079 ("refin") appears 1 time.
-Word 1080 ("treasur") appears 1 time.
-Word 1081 ("worri") appears 1 time.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3985b8b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="running-lda-using-bag-of-words-data">Running LDA using Bag of Words data<a class="anchor-link" href="#running-lda-using-bag-of-words-data">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3eeaab12">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">lda_model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">LdaMulticore</span><span class="p">(</span><span class="n">bow_corpus</span><span class="p">,</span> 
-                                        <span class="n">num_topics</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> 
-                                        <span class="n">id2word</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">,</span> 
-                                        <span class="n">passes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
-                                        <span class="n">workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-17">lda_model = gensim.models.LdaMulticore(bow_corpus, 
-                                        num_topics=6, 
-                                        id2word = dictionary, 
-                                        passes = 2, 
-                                        workers=2)
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=20640bd8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">lda_model</span><span class="o">.</span><span class="n">print_topics</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Topic: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Words: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">topic</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-18">for idx, topic in lda_model.print_topics():
-    print("Topic: {} \nWords: {}".format(idx, topic))
-    print("\n")
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Topic: 0 
-Words: 0.006*"file" + 0.004*"china" + 0.003*"vehicl" + 0.003*"energi" + 0.003*"charg" + 0.003*"electr" + 0.003*"teacher" + 0.003*"vaccin" + 0.003*"board" + 0.003*"librari"
-
-
-Topic: 1 
-Words: 0.004*"grid" + 0.004*"trump" + 0.003*"electr" + 0.003*"star" + 0.003*"parti" + 0.003*"scienc" + 0.003*"texa" + 0.003*"energi" + 0.003*"love" + 0.003*"food"
-
-
-Topic: 2 
-Words: 0.011*"koala" + 0.007*"vaccin" + 0.005*"chlamydia" + 0.004*"nepal" + 0.004*"australia" + 0.004*"patient" + 0.004*"content" + 0.004*"prime" + 0.003*"colleg" + 0.003*"hospit"
-
-
-Topic: 3 
-Words: 0.004*"kirk" + 0.003*"innov" + 0.003*"user" + 0.003*"construct" + 0.003*"charli" + 0.003*"vote" + 0.002*"candid" + 0.002*"integr" + 0.002*"elect" + 0.002*"content"
-
-
-Topic: 4 
-Words: 0.012*"iphon" + 0.007*"appl" + 0.004*"vaccin" + 0.004*"blood" + 0.004*"mount" + 0.004*"food" + 0.003*"manufactur" + 0.003*"electr" + 0.003*"trust" + 0.003*"billion"
-
-
-Topic: 5 
-Words: 0.004*"prime" + 0.004*"mode" + 0.004*"black" + 0.004*"drug" + 0.004*"medic" + 0.003*"trump" + 0.003*"incom" + 0.003*"bank" + 0.003*"crore" + 0.003*"israel"
-
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd65e5d3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="topic-coherence">topic coherence<a class="anchor-link" href="#topic-coherence">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4c44b868">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CoherenceModel</span>
-
-<span class="n">coherence_model_lda</span> <span class="o">=</span> <span class="n">CoherenceModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">texts</span><span class="o">=</span><span class="n">processed_docs</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">coherence</span><span class="o">=</span><span class="s1">'c_v'</span><span class="p">)</span>
-<span class="n">coherence_lda</span> <span class="o">=</span> <span class="n">coherence_model_lda</span><span class="o">.</span><span class="n">get_coherence</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Coherence Score: '</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-19">from gensim.models import CoherenceModel
-
-coherence_model_lda = CoherenceModel(model=lda_model, texts=processed_docs, dictionary=dictionary, coherence='c_v')
-coherence_lda = coherence_model_lda.get_coherence()
-print('\nCoherence Score: ', coherence_lda)
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-Coherence Score:  0.2880181053499899
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=976bfac0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="classifying">classifying<a class="anchor-link" href="#classifying">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6a313c88">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_dominant_topic</span><span class="p">(</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">bow</span><span class="p">):</span>
-    <span class="n">topic_scores</span> <span class="o">=</span> <span class="n">lda_model</span><span class="p">[</span><span class="n">bow</span><span class="p">]</span>  
-    <span class="k">if</span> <span class="n">topic_scores</span><span class="p">:</span>
-        
-        <span class="n">dominant_topic</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">topic_scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">dominant_topic</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-
-<span class="n">documents</span><span class="p">[</span><span class="s1">'topik_utama'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_dominant_topic</span><span class="p">(</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">bow</span><span class="p">)</span> <span class="k">for</span> <span class="n">bow</span> <span class="ow">in</span> <span class="n">bow_corpus</span><span class="p">]</span>
-
-<span class="n">documents</span><span class="p">[[</span><span class="s1">'isi_cleanText_kontraksi_tokenize_spell_stop_lemm'</span><span class="p">,</span> <span class="s1">'topik_utama'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-20">def get_dominant_topic(lda_model, bow):
-    topic_scores = lda_model[bow]  
-    if topic_scores:
-        
-        dominant_topic = max(topic_scores, key=lambda x: x[1])[0]
-        return dominant_topic
-    else:
-        return None
-
-
-documents['topik_utama'] = [get_dominant_topic(lda_model, bow) for bow in bow_corpus]
-
-documents[['isi_cleanText_kontraksi_tokenize_spell_stop_lemm', 'topik_utama']].head(10)
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_23668\206171297.py:11: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  documents['topik_utama'] = [get_dominant_topic(lda_model, bow) for bow in bow_corpus]
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -1888,79 +1153,192 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>isi_cleanText_kontraksi_tokenize_spell_stop_lemm</th>
-<th>topik_utama</th>
+<th>host</th>
+<th>rfc931</th>
+<th>authuser</th>
+<th>datetime_raw</th>
+<th>request_raw</th>
+<th>status</th>
+<th>bytes</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>public auction sale heather edward notice publ...</td>
-<td>3</td>
+<td>199.72.81.55</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:01 -0400</td>
+<td>GET /history/apollo/ HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+<td>GET</td>
+<td>/history/apollo/</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
 <th>1</th>
-<td>filing notice side thomas sander american dock...</td>
-<td>3</td>
+<td>unicomp6.unicomp.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:06 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
 <th>2</th>
-<td>navigating sarawak gas demand without risking ...</td>
-<td>0</td>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:09 -0400</td>
+<td>GET /shuttle/missions/sts-73/mission-sts-73.ht...</td>
+<td>200</td>
+<td>4085</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/mission-sts-73.html</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
 <th>3</th>
-<td>desk diversified skullcap exposure attractive ...</td>
-<td>1</td>
+<td>burger.letters.com</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:11 -0400</td>
+<td>GET /shuttle/countdown/liftoff.html HTTP/1.0</td>
+<td>304</td>
+<td>0</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
 <th>4</th>
-<td>singapore crack unlicensed foreign freelancer ...</td>
-<td>5</td>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:11 -0400</td>
+<td>GET /shuttle/missions/sts-73/sts-73-patch-smal...</td>
+<td>200</td>
+<td>4179</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/sts-73-patch-small.gif</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
-<th>5</th>
-<td>armada villa unit clear reserve one bid sell a...</td>
-<td>1</td>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 <tr>
-<th>6</th>
-<td>home price set soar across country pushing mil...</td>
-<td>5</td>
+<th>1891709</th>
+<td>163.205.53.14</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:22 -0400</td>
+<td>GET /shuttle/technology/images/srb_mod_compare...</td>
+<td>200</td>
+<td>28219</td>
+<td>GET</td>
+<td>/shuttle/technology/images/srb_mod_compare_6-s...</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
-<th>7</th>
-<td>ringgit expected trade tight range next week k...</td>
-<td>3</td>
+<th>1891710</th>
+<td>163.205.53.14</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /images/KSC-logosmall.gif HTTP/1.0</td>
+<td>200</td>
+<td>1204</td>
+<td>GET</td>
+<td>/images/KSC-logosmall.gif</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
-<th>8</th>
-<td>early warning report mount logan capital inc f...</td>
-<td>4</td>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /shuttle/missions/missions.html HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
 </tr>
 <tr>
-<th>9</th>
-<td>par villager benefit multipurpose hall farm ro...</td>
-<td>0</td>
+<th>1891712</th>
+<td>199.0.2.27</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /images/ksclogo-medium.gif HTTP/1.0</td>
+<td>200</td>
+<td>5866</td>
+<td>GET</td>
+<td>/images/ksclogo-medium.gif</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891713</th>
+<td>tornado.umd.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:25 -0400</td>
+<td>GET /shuttle/missions/sts-74/sts-74-patch-smal...</td>
+<td>200</td>
+<td>5494</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-74/sts-74-patch-small.gif</td>
+<td>HTTP/1.0</td>
 </tr>
 </tbody>
 </table>
+<p>1891714 rows × 10 columns</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f4289ee8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="filter-baris">Filter baris<a class="anchor-link" href="#filter-baris">¶</a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=210dd55d">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8afb74c0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1970,25 +1348,688 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_dominant_topic_words</span><span class="p">(</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">bow</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">topic_scores</span> <span class="o">=</span> <span class="n">lda_model</span><span class="p">[</span><span class="n">bow</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">topic_scores</span><span class="p">:</span>
-        <span class="n">dominant_topic</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">topic_scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">lda_model</span><span class="o">.</span><span class="n">print_topic</span><span class="p">(</span><span class="n">dominant_topic</span><span class="p">,</span> <span class="n">topn</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-<span class="n">documents</span><span class="p">[</span><span class="s1">'topik_utama_words'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_dominant_topic_words</span><span class="p">(</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">bow</span><span class="p">)</span> <span class="k">for</span> <span class="n">bow</span> <span class="ow">in</span> <span class="n">bow_corpus</span><span class="p">]</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ambil hanya ekstensi .html atau tanpa ekstensi</span>
+<span class="n">dfProcess</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"path"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".html"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">|</span> 
+    <span class="p">(</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s2">"path"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\."</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># path tanpa titik (tanpa ekstensi)</span>
+<span class="p">]</span>
+<span class="n">dfProcess</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-21">def get_dominant_topic_words(lda_model, bow, topn=5):
-    topic_scores = lda_model[bow]
-    if topic_scores:
-        dominant_topic = max(topic_scores, key=lambda x: x[1])[0]
-        return lda_model.print_topic(dominant_topic, topn)
-    else:
-        return None
+<div class="clipboard-copy-txt" id="cell-9"># Ambil hanya ekstensi .html atau tanpa ekstensi
+dfProcess = df[
+    df["path"].str.endswith(".html", na=False) | 
+    (~df["path"].str.contains(r"\.", na=False))  # path tanpa titik (tanpa ekstensi)
+]
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-documents['topik_utama_words'] = [get_dominant_topic_words(lda_model, bow) for bow in bow_corpus]
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>rfc931</th>
+<th>authuser</th>
+<th>datetime_raw</th>
+<th>request_raw</th>
+<th>status</th>
+<th>bytes</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>199.72.81.55</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:01 -0400</td>
+<td>GET /history/apollo/ HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+<td>GET</td>
+<td>/history/apollo/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>unicomp6.unicomp.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:06 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:09 -0400</td>
+<td>GET /shuttle/missions/sts-73/mission-sts-73.ht...</td>
+<td>200</td>
+<td>4085</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/mission-sts-73.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>burger.letters.com</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:11 -0400</td>
+<td>GET /shuttle/countdown/liftoff.html HTTP/1.0</td>
+<td>304</td>
+<td>0</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>205.212.115.106</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:12 -0400</td>
+<td>GET /shuttle/countdown/countdown.html HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/countdown.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1891693</th>
+<td>maynard.isi.uconn.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:17 -0400</td>
+<td>GET /shuttle/technology/sts-newsref/sts_egress...</td>
+<td>200</td>
+<td>86379</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts_egress.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891695</th>
+<td>tornado.umd.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:18 -0400</td>
+<td>GET /shuttle/missions/sts-74/mission-sts-74.ht...</td>
+<td>200</td>
+<td>3790</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-74/mission-sts-74.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891696</th>
+<td>199.0.2.27</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET / HTTP/1.0</td>
+<td>200</td>
+<td>7280</td>
+<td>GET</td>
+<td>/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891697</th>
+<td>gk-east.usps.gov</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET /facts/faq.html HTTP/1.0</td>
+<td>200</td>
+<td>18290</td>
+<td>GET</td>
+<td>/facts/faq.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /shuttle/missions/missions.html HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+</tr>
+</tbody>
+</table>
+<p>604688 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ee100c12">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ambil hanya status 200</span>
+<span class="n">dfProcess</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="p">[(</span><span class="n">dfProcess</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"200"</span><span class="p">)]</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-10"># Ambil hanya status 200
+dfProcess = dfProcess[(dfProcess["status"] == "200")]
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>rfc931</th>
+<th>authuser</th>
+<th>datetime_raw</th>
+<th>request_raw</th>
+<th>status</th>
+<th>bytes</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>199.72.81.55</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:01 -0400</td>
+<td>GET /history/apollo/ HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+<td>GET</td>
+<td>/history/apollo/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>unicomp6.unicomp.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:06 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:09 -0400</td>
+<td>GET /shuttle/missions/sts-73/mission-sts-73.ht...</td>
+<td>200</td>
+<td>4085</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/mission-sts-73.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>205.212.115.106</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:12 -0400</td>
+<td>GET /shuttle/countdown/countdown.html HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/countdown.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>d104.aa.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:13 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1891693</th>
+<td>maynard.isi.uconn.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:17 -0400</td>
+<td>GET /shuttle/technology/sts-newsref/sts_egress...</td>
+<td>200</td>
+<td>86379</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts_egress.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891695</th>
+<td>tornado.umd.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:18 -0400</td>
+<td>GET /shuttle/missions/sts-74/mission-sts-74.ht...</td>
+<td>200</td>
+<td>3790</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-74/mission-sts-74.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891696</th>
+<td>199.0.2.27</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET / HTTP/1.0</td>
+<td>200</td>
+<td>7280</td>
+<td>GET</td>
+<td>/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891697</th>
+<td>gk-east.usps.gov</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET /facts/faq.html HTTP/1.0</td>
+<td>200</td>
+<td>18290</td>
+<td>GET</td>
+<td>/facts/faq.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /shuttle/missions/missions.html HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+</tr>
+</tbody>
+</table>
+<p>528587 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8386ec31">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ambil hanya method GET</span>
+<span class="n">dfProcess</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="p">[(</span><span class="n">dfProcess</span><span class="p">[</span><span class="s2">"request_method"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"GET"</span><span class="p">)]</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-11"># Ambil hanya method GET
+dfProcess = dfProcess[(dfProcess["request_method"] == "GET")]
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>rfc931</th>
+<th>authuser</th>
+<th>datetime_raw</th>
+<th>request_raw</th>
+<th>status</th>
+<th>bytes</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>199.72.81.55</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:01 -0400</td>
+<td>GET /history/apollo/ HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+<td>GET</td>
+<td>/history/apollo/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>unicomp6.unicomp.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:06 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>199.120.110.21</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:09 -0400</td>
+<td>GET /shuttle/missions/sts-73/mission-sts-73.ht...</td>
+<td>200</td>
+<td>4085</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/mission-sts-73.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>205.212.115.106</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:12 -0400</td>
+<td>GET /shuttle/countdown/countdown.html HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/countdown.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>d104.aa.net</td>
+<td>-</td>
+<td>-</td>
+<td>01/Jul/1995:00:00:13 -0400</td>
+<td>GET /shuttle/countdown/ HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1891693</th>
+<td>maynard.isi.uconn.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:17 -0400</td>
+<td>GET /shuttle/technology/sts-newsref/sts_egress...</td>
+<td>200</td>
+<td>86379</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts_egress.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891695</th>
+<td>tornado.umd.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:18 -0400</td>
+<td>GET /shuttle/missions/sts-74/mission-sts-74.ht...</td>
+<td>200</td>
+<td>3790</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-74/mission-sts-74.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891696</th>
+<td>199.0.2.27</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET / HTTP/1.0</td>
+<td>200</td>
+<td>7280</td>
+<td>GET</td>
+<td>/</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891697</th>
+<td>gk-east.usps.gov</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:19 -0400</td>
+<td>GET /facts/faq.html HTTP/1.0</td>
+<td>200</td>
+<td>18290</td>
+<td>GET</td>
+<td>/facts/faq.html</td>
+<td>HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>-</td>
+<td>-</td>
+<td>28/Jul/1995:13:32:23 -0400</td>
+<td>GET /shuttle/missions/missions.html HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff86b72c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="konversi-datetime">Konversi datetime<a class="anchor-link" href="#konversi-datetime">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c60494f1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Konversi datetime</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"datetime"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dfProcess</span><span class="p">[</span><span class="s2">"datetime_raw"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%d</span><span class="s2">/%b/%Y:%H:%M:%S %z"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-12"># Konversi datetime
+dfProcess["datetime"] = pd.to_datetime(dfProcess["datetime_raw"], format="%d/%b/%Y:%H:%M:%S %z")
 </div>
 </div>
 </div>
@@ -2001,13 +2042,1616 @@ documents['topik_utama_words'] = [get_dominant_topic_words(lda_model, bow) for b
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_23668\4006713719.py:9: SettingWithCopyWarning: 
+<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_16792\2245811937.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  documents['topik_utama_words'] = [get_dominant_topic_words(lda_model, bow) for bow in bow_corpus]
+  dfProcess["datetime"] = pd.to_datetime(dfProcess["datetime_raw"], format="%d/%b/%Y:%H:%M:%S %z")
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=85591e3e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="tambah-identifier">Tambah identifier<a class="anchor-link" href="#tambah-identifier">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2934aa99">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Tambahkan identifier</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"identifier"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="p">[</span><span class="s2">"host"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="n">dfProcess</span><span class="p">[</span><span class="s2">"http_protocol"</span><span class="p">]</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-13"># Tambahkan identifier
+dfProcess["identifier"] = dfProcess["host"] + "_" + dfProcess["http_protocol"]
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\BRIAN\AppData\Local\Temp\ipykernel_16792\3308012854.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dfProcess["identifier"] = dfProcess["host"] + "_" + dfProcess["http_protocol"]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7803cd47">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="tampilan-hasil-akhir">Tampilan hasil akhir<a class="anchor-link" href="#tampilan-hasil-akhir">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b09857ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Hasil akhir</span>
+<span class="n">dfProcess</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="p">[[</span><span class="s2">"host"</span><span class="p">,</span> <span class="s2">"datetime"</span><span class="p">,</span> <span class="s2">"request_method"</span><span class="p">,</span> <span class="s2">"path"</span><span class="p">,</span> <span class="s2">"http_protocol"</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">,</span> <span class="s2">"bytes"</span><span class="p">,</span> <span class="s2">"identifier"</span><span class="p">]]</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-14"># Hasil akhir
+dfProcess = dfProcess[["host", "datetime", "request_method", "path", "http_protocol", "status", "bytes", "identifier"]]
+dfProcess
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>datetime</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+<th>status</th>
+<th>bytes</th>
+<th>identifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>199.72.81.55</td>
+<td>1995-07-01 00:00:01-04:00</td>
+<td>GET</td>
+<td>/history/apollo/</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6245</td>
+<td>199.72.81.55_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>unicomp6.unicomp.net</td>
+<td>1995-07-01 00:00:06-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>unicomp6.unicomp.net_HTTP/1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>199.120.110.21</td>
+<td>1995-07-01 00:00:09-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-73/mission-sts-73.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>4085</td>
+<td>199.120.110.21_HTTP/1.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>205.212.115.106</td>
+<td>1995-07-01 00:00:12-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/countdown.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>205.212.115.106_HTTP/1.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>d104.aa.net</td>
+<td>1995-07-01 00:00:13-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>3985</td>
+<td>d104.aa.net_HTTP/1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>1891693</th>
+<td>maynard.isi.uconn.edu</td>
+<td>1995-07-28 13:32:17-04:00</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts_egress.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>86379</td>
+<td>maynard.isi.uconn.edu_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891695</th>
+<td>tornado.umd.edu</td>
+<td>1995-07-28 13:32:18-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-74/mission-sts-74.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>3790</td>
+<td>tornado.umd.edu_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891696</th>
+<td>199.0.2.27</td>
+<td>1995-07-28 13:32:19-04:00</td>
+<td>GET</td>
+<td>/</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>7280</td>
+<td>199.0.2.27_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891697</th>
+<td>gk-east.usps.gov</td>
+<td>1995-07-28 13:32:19-04:00</td>
+<td>GET</td>
+<td>/facts/faq.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>18290</td>
+<td>gk-east.usps.gov_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1891711</th>
+<td>tiger2.ocs.lsu.edu</td>
+<td>1995-07-28 13:32:23-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>8677</td>
+<td>tiger2.ocs.lsu.edu_HTTP/1.0</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4517c5a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="membuat-sesi">Membuat Sesi<a class="anchor-link" href="#membuat-sesi">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b1cbb570">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Definisikan parameter dan buat sesi</span>
+<span class="n">dfProcess</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"identifier"</span><span class="p">,</span> <span class="s2">"datetime"</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-15"># Definisikan parameter dan buat sesi
+dfProcess = dfProcess.sort_values(["identifier", "datetime"]).reset_index(drop=True)
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>datetime</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+<th>status</th>
+<th>bytes</th>
+<th>identifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:09-04:00</td>
+<td>GET</td>
+<td>/ksc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>7067</td>
+<td>***.novo.dk_HTTP/1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:48-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>8678</td>
+<td>***.novo.dk_HTTP/1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:05-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:19-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:23:01-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/columbia.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6922</td>
+<td>***.novo.dk_HTTP/1.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>524368</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:03:16-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>2602</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+</tr>
+<tr>
+<th>524369</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:06-04:00</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts-lcc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>32252</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+</tr>
+<tr>
+<th>524370</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:40-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/movies/movies.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>1395</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+</tr>
+<tr>
+<th>524371</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:14:51-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/images/images.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>4048</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+</tr>
+<tr>
+<th>524372</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:17:46-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/discovery.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6861</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a93a7c7b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># hitung selisih waktu antar request per identifier</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"time_diff"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"identifier"</span><span class="p">)[</span><span class="s2">"datetime"</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-16"># hitung selisih waktu antar request per identifier
+dfProcess["time_diff"] = dfProcess.groupby("identifier")["datetime"].diff().dt.total_seconds().fillna(0)
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>datetime</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+<th>status</th>
+<th>bytes</th>
+<th>identifier</th>
+<th>time_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:09-04:00</td>
+<td>GET</td>
+<td>/ksc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>7067</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:48-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>8678</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>39.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:05-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>197.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:19-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>14.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:23:01-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/columbia.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6922</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>102.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>524368</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:03:16-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>2602</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>4327.0</td>
+</tr>
+<tr>
+<th>524369</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:06-04:00</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts-lcc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>32252</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>50.0</td>
+</tr>
+<tr>
+<th>524370</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:40-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/movies/movies.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>1395</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>34.0</td>
+</tr>
+<tr>
+<th>524371</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:14:51-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/images/images.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>4048</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>611.0</td>
+</tr>
+<tr>
+<th>524372</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:17:46-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/discovery.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6861</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>175.0</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=048be870">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># buat kolom sesi: jika jeda &gt; 1800 detik (30 menit), sesi baru</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"new_session"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfProcess</span><span class="p">[</span><span class="s2">"time_diff"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1800</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-17"># buat kolom sesi: jika jeda &gt; 1800 detik (30 menit), sesi baru
+dfProcess["new_session"] = (dfProcess["time_diff"] &gt; 1800).astype(int)
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>datetime</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+<th>status</th>
+<th>bytes</th>
+<th>identifier</th>
+<th>time_diff</th>
+<th>new_session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:09-04:00</td>
+<td>GET</td>
+<td>/ksc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>7067</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>0.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:48-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>8678</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>39.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:05-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>197.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:19-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>14.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:23:01-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/columbia.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6922</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>102.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>524368</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:03:16-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>2602</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>4327.0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>524369</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:06-04:00</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts-lcc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>32252</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>50.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>524370</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:40-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/movies/movies.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>1395</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>34.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>524371</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:14:51-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/images/images.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>4048</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>611.0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>524372</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:17:46-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/discovery.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6861</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>175.0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=317497f2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># buat nomor sesi kumulatif per identifier</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"session_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"identifier"</span><span class="p">)[</span><span class="s2">"new_session"</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-18"># buat nomor sesi kumulatif per identifier
+dfProcess["session_id"] = dfProcess.groupby("identifier")["new_session"].cumsum() + 1
+dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>host</th>
+<th>datetime</th>
+<th>request_method</th>
+<th>path</th>
+<th>http_protocol</th>
+<th>status</th>
+<th>bytes</th>
+<th>identifier</th>
+<th>time_diff</th>
+<th>new_session</th>
+<th>session_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:09-04:00</td>
+<td>GET</td>
+<td>/ksc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>7067</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>1</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:17:48-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/missions.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>8678</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>39.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:05-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>197.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>3</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:21:19-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-35/mission-sts-35.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>12118</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>14.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>4</th>
+<td>***.novo.dk</td>
+<td>1995-07-11 08:23:01-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/columbia.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6922</td>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>102.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>524368</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:03:16-04:00</td>
+<td>GET</td>
+<td>/shuttle/countdown/liftoff.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>2602</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>4327.0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<th>524369</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:06-04:00</td>
+<td>GET</td>
+<td>/shuttle/technology/sts-newsref/sts-lcc.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>32252</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>50.0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<th>524370</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:04:40-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/movies/movies.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>1395</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>34.0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<th>524371</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:14:51-04:00</td>
+<td>GET</td>
+<td>/shuttle/missions/sts-70/images/images.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>4048</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>611.0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<th>524372</th>
+<td>zzz.pe.u-tokyo.ac.jp</td>
+<td>1995-07-13 07:17:46-04:00</td>
+<td>GET</td>
+<td>/shuttle/resources/orbiters/discovery.html</td>
+<td>HTTP/1.0</td>
+<td>200</td>
+<td>6861</td>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>175.0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>524373 rows × 11 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e0ec4bd1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">dfProcess</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'../data/csv/proses-sessioning.csv'</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-19">dfProcess.to_csv('../data/csv/proses-sessioning.csv')</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44900cb2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="membuat-tabel-biner">Membuat tabel biner<a class="anchor-link" href="#membuat-tabel-biner">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c43c9e12">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># kelompokkan per user-session</span>
+<span class="n">dfProcess</span><span class="p">[</span><span class="s2">"user_session"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProcess</span><span class="p">[</span><span class="s2">"identifier"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"_S"</span> <span class="o">+</span> <span class="n">dfProcess</span><span class="p">[</span><span class="s2">"session_id"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># buat pivot biner</span>
+<span class="n">pivot_dfProcess</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dfProcess</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">visited</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+          <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"identifier"</span><span class="p">,</span> <span class="s2">"session_id"</span><span class="p">],</span>
+          <span class="n">columns</span><span class="o">=</span><span class="s2">"path"</span><span class="p">,</span>
+          <span class="n">values</span><span class="o">=</span><span class="s2">"visited"</span><span class="p">,</span>
+          <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"max"</span><span class="p">,</span>
+          <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+      <span class="p">)</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-20"># kelompokkan per user-session
+dfProcess["user_session"] = dfProcess["identifier"] + "_S" + dfProcess["session_id"].astype(str)
+
+# buat pivot biner
+pivot_dfProcess = (
+    dfProcess.assign(visited=1)
+      .pivot_table(
+          index=["identifier", "session_id"],
+          columns="path",
+          values="visited",
+          aggfunc="max",
+          fill_value=0
+      )
+      .reset_index()
+)
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=815fb214">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">pivot_dfProcess</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-21">pivot_dfProcess</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>path</th>
+<th>identifier</th>
+<th>session_id</th>
+<th>/</th>
+<th>/%7Edowns/home.html</th>
+<th>/%7edowns/home.html</th>
+<th>/.ksc.html</th>
+<th>//</th>
+<th>//biomed/gif/</th>
+<th>//facilities/spaceport.html</th>
+<th>//ksc.html</th>
+<th>...</th>
+<th>/~downs/harvest-1.2/brokers/Attributes.html</th>
+<th>/~downs/harvest-1.2/brokers/www/admin/admin.html</th>
+<th>/~downs/harvest-1.2/brokers/www/index.html</th>
+<th>/~downs/harvest-1.2/brokers/www/query-glimpse.html</th>
+<th>/~downs/harvest-1.2/brokers/www/query.html</th>
+<th>/~downs/home.html</th>
+<th>/~downs/www/</th>
+<th>/~downs/www/index.html</th>
+<th>/~downs/www/query.html</th>
+<th>/~downs/www/summary.html</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>***.novo.dk_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>007.thegap.com_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>007.thegap.com_HTTP/1.0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>007.thegap.com_HTTP/1.0</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>007.thegap.com_HTTP/1.0</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>146690</th>
+<td>zzsmiege.slip.cc.uq.oz.au_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>146691</th>
+<td>zzsmiffs.slip.cc.uq.oz.au_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>146692</th>
+<td>zzyzx.demon.co.uk_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>146693</th>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>146694</th>
+<td>zzz.pe.u-tokyo.ac.jp_HTTP/1.0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>146695 rows × 1676 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1f049d8a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-22">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">pivot_dfProcess</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'../data/csv/web-usage-session-tabel-kunjungan-biner.csv'</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-22">pivot_dfProcess.to_csv('../data/csv/web-usage-session-tabel-kunjungan-biner.csv')</div>
 </div>
 </div>
 </div>
@@ -2025,8 +3669,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../embedding/" class="btn btn-neutral float-left" title="Embedding"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../uts-gabung/" class="btn btn-neutral float-right" title="UTS">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../FTUTM-link-pagerank/" class="btn btn-neutral float-left" title="Fakultas Teknik UTM teknik.trunojoyo.ac.id link Page Rank"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../web-usage/" class="btn btn-neutral float-right" title="Data log to Tabel Biner Halaman dikunjungi dan session Sederhana">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -2049,10 +3693,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../embedding/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../FTUTM-link-pagerank/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../uts-gabung/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../web-usage/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
